@@ -142,7 +142,6 @@ void Polynomial::Attach(Polynomial poly)
 // return the sum of the polynomials *this and poly
 void Polynomial::Add(Polynomial polyA, Polynomial polyB)
 {
-	float coefSum = 0;
 	int exp = 0;
 	
 	iLeadExp = (polyA.iLeadExp >= polyB.iLeadExp) ? polyA.iLeadExp : polyB.iLeadExp;
@@ -153,14 +152,14 @@ void Polynomial::Add(Polynomial polyA, Polynomial polyB)
 			case -1:
 			{
 				exp = polyB.LeadExp();
-				coefSum = polyB.Coef(exp);
+				Attach(polyB.Coef(exp), exp);
 				polyB.Remove(exp);
 				break;
 			}
 			case 0:
 			{
 				exp = polyA.LeadExp();
-				coefSum = polyA.Coef(exp) + polyB.Coef(exp);				
+				Attach(polyA.Coef(exp) + polyB.Coef(exp), exp);
 				polyA.Remove(exp);
 				polyB.Remove(exp);
 				break;
@@ -168,31 +167,22 @@ void Polynomial::Add(Polynomial polyA, Polynomial polyB)
 			case 1:
 			{
 				exp = polyA.LeadExp();
-				coefSum = polyA.Coef(exp);
+				Attach(polyA.Coef(exp), exp);
 				polyA.Remove(exp);
 				break;
 			}
 		}
-		*(pCoeff + exp) = coefSum;
 	}
 
 	// add the remaining polyA
 	if (!polyA.IsZero())
 	{
-		exp = polyA.LeadExp();
-		for (int i = 0; i <= exp; i++)
-		{
-			*(pCoeff + i) = polyA.Coef(i);
-		}
+		Attach(polyA);
 	}
 
 	// add the remaining polyB
 	if (!polyB.IsZero())
 	{
-		exp = polyB.LeadExp();
-		for (int i = 0; i <= exp; i++)
-		{
-			*(pCoeff + i) = polyB.Coef(i);
-		}
+		Attach(polyB);
 	}
 }
