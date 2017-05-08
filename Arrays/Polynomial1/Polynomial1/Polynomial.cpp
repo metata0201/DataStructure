@@ -45,7 +45,11 @@ Polynomial::Polynomial(int size)
 
 Polynomial::~Polynomial()
 {
-
+	if (pCoeff)
+	{
+		delete []pCoeff;
+		pCoeff = NULL;
+	}
 }
 
 void Polynomial::expression()
