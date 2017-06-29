@@ -259,3 +259,116 @@ void BiTree::LevelOrder()
     }
     cout << endl;
 }
+
+// More easy way to implemnet non-recursice traversal
+// Reference:http://zisong.me/post/suan-fa/geng-jian-dan-de-bian-li-er-cha-shu-de-fang-fa
+void BiTree::NonRecurPreOrderNew()
+{
+    if (pRoot == NULL)
+    {
+        return;
+    }
+
+    stack<pair<BiTreeNode*, bool>> sNodes;
+    sNodes.push(make_pair(pRoot, false));
+
+    cout << "Easy pre-order:";
+    while (!sNodes.empty())
+    {
+        BiTreeNode *pCurrNode = sNodes.top().first;
+        bool bVisited = sNodes.top().second;
+        sNodes.pop();
+
+        if (bVisited)
+        {
+            cout << pCurrNode->data << " ";
+        }
+        else
+        {
+            if (pCurrNode->pRChild)
+            {
+                sNodes.push(make_pair(pCurrNode->pRChild, false));
+            }
+            if (pCurrNode->pLChild)
+            {
+                sNodes.push(make_pair(pCurrNode->pLChild, false));
+            }
+            sNodes.push(make_pair(pCurrNode, true));
+        }
+    }
+    cout << endl;
+}
+
+void BiTree::NonRecurInOrderNew()
+{
+    if (pRoot == NULL)
+    {
+        return;
+    }
+
+    stack<pair<BiTreeNode*, bool>> sNodes;
+    sNodes.push(make_pair(pRoot, false));
+
+    cout << "Easy in-order:";
+    while (!sNodes.empty())
+    {
+        BiTreeNode *pCurrNode = sNodes.top().first;
+        bool bVisited = sNodes.top().second;
+        sNodes.pop();
+
+        if (bVisited)
+        {
+            cout << pCurrNode->data << " ";
+        }
+        else
+        {
+            if (pCurrNode->pRChild)
+            {
+                sNodes.push(make_pair(pCurrNode->pRChild, false));
+            }
+            sNodes.push(make_pair(pCurrNode, true));
+            if (pCurrNode->pLChild)
+            {
+                sNodes.push(make_pair(pCurrNode->pLChild, false));
+            }
+        }
+    }
+    cout << endl;
+}
+
+void BiTree::NonRecurPostOrderNew()
+{
+    if (pRoot == NULL)
+    {
+        return;
+    }
+
+    stack<pair<BiTreeNode*, bool>> sNodes;
+    sNodes.push(make_pair(pRoot, false));
+
+    cout << "Easy post-order:";
+    while (!sNodes.empty())
+    {
+        BiTreeNode *pCurrNode = sNodes.top().first;
+        bool bVisited = sNodes.top().second;
+        sNodes.pop();
+
+        if (bVisited)
+        {
+            cout << pCurrNode->data << " ";
+        }
+        else
+        {
+            sNodes.push(make_pair(pCurrNode, true));
+            if (pCurrNode->pRChild)
+            {
+                sNodes.push(make_pair(pCurrNode->pRChild, false));
+            }
+            if (pCurrNode->pLChild)
+            {
+                sNodes.push(make_pair(pCurrNode->pLChild, false));
+            }
+        }
+    }
+    cout << endl;
+}

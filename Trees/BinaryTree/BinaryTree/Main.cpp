@@ -13,14 +13,17 @@ void main()
     // Pre-order traversal
     binaryTree.RecurPreOrder();
     binaryTree.NonRecurPreOrder();
+    binaryTree.NonRecurPreOrderNew();
 
     // In-order traversal
     binaryTree.RecurInOrder();
     binaryTree.NonRecurInOrder();
+    binaryTree.NonRecurInOrderNew();
 
     // Post-order traversal
     binaryTree.RecurPostOrder();
     binaryTree.NonRecurPostOrder();
+    binaryTree.NonRecurPostOrderNew();
 
     // level order traversal
     binaryTree.LevelOrder();

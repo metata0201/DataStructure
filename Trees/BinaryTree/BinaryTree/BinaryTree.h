@@ -26,6 +26,10 @@ public:
     void NonRecurPostOrder();
     // level order traversal
     void LevelOrder();
+    // Non-recursice traversal:more easy
+    void NonRecurPreOrderNew();
+    void NonRecurInOrderNew();
+    void NonRecurPostOrderNew();
 
 private:
     void PreOrder(BiTreeNode* pNode);
