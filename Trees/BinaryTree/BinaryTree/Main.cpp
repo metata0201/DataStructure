@@ -12,10 +12,16 @@ void main()
 
     // Pre-order traversal
     binaryTree.RecurPreOrder();
+    binaryTree.NonRecurPreOrder();
 
     // In-order traversal
     binaryTree.RecurInOrder();
+    binaryTree.NonRecurInOrder();
 
     // Post-order traversal
     binaryTree.RecurPostOrder();
+    binaryTree.NonRecurPostOrder();
+
+    // level order traversal
+    binaryTree.LevelOrder();
 }

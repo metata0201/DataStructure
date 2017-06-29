@@ -4,6 +4,7 @@ class BiTreeNode
 public:
     BiTreeNode(char c);
 private:
+    bool bIsFirst;          // Specially use for non-recursive post-order traversal.
     char data;
     BiTreeNode *pLChild;
     BiTreeNode *pRChild;
@@ -20,9 +21,11 @@ public:
     void RecurInOrder();
     void RecurPostOrder();
     // Non-recursice traversal
-    void NonRecurInOrder();
     void NonRecurPreOrder();
+    void NonRecurInOrder();
     void NonRecurPostOrder();
+    // level order traversal
+    void LevelOrder();
 
 private:
     void PreOrder(BiTreeNode* pNode);
