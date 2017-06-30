@@ -1,3 +1,7 @@
+#include <string>
+
+using namespace std;
+
 class BiTreeNode
 {
     friend class BiTree;
@@ -15,7 +19,10 @@ class BiTree
 public:
     BiTree();
     ~BiTree();
+    // Create tree
     void CreateFromLevelOrder(char cArray[], int n);
+    void CreateFromPostFixExpression(string sPostFix);
+    void CreateFromPreFixExpression(string sPreFix);
     // Recursive traversal
     void RecurPreOrder();
     void RecurInOrder();

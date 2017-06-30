@@ -1,4 +1,4 @@
-#include <queue>
+﻿#include <queue>
 #include <stack>
 #include <iostream>
 #include "BinaryTree.h"
@@ -57,6 +57,79 @@ void BiTree::CreateFromLevelOrder(char cArray[], int n)
             qNodes.push(pRNode);
         }
     }
+}
+
+// Create algebraic expressions tree from post-fix expression
+// Reference:https://en.wikipedia.org/wiki/Binary_expression_tree
+void BiTree::CreateFromPostFixExpression(string sPostFix)
+{
+    stack<BiTreeNode*> Stack;
+
+    // Loop from begin to end
+    for (int i = 0; i < sPostFix.size(); i++)
+    {
+        pRoot = new BiTreeNode(sPostFix.at(i));
+        switch (sPostFix.at(i))
+        {
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '%':
+        case '^':
+            pRoot->pRChild = Stack.top();
+            Stack.pop();
+            pRoot->pLChild = Stack.top();
+            Stack.pop();
+            break;
+        default:
+            if (!(sPostFix.at(i)>'0' && sPostFix.at(i)<'9'))
+            {
+                cout << "Invalid algebraic expression!" << endl;
+            }
+            break;
+        }
+        Stack.push(pRoot);
+    }
+
+    pRoot = Stack.top();
+    Stack.pop();
+}
+
+// Create algebraic expressions tree from pre-fix expression
+void BiTree::CreateFromPreFixExpression(string sPreFix)
+{
+    stack<BiTreeNode*> Stack;
+
+    // Loop from end to begin
+    for (int i = sPreFix.size()-1; i >= 0; i--)
+    {
+        pRoot = new BiTreeNode(sPreFix.at(i));
+        switch (sPreFix.at(i))
+        {
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '%':
+        case '^':
+            pRoot->pLChild = Stack.top();
+            Stack.pop();
+            pRoot->pRChild = Stack.top();
+            Stack.pop();
+            break;
+        default:
+            if (!(sPreFix.at(i)>'0' && sPreFix.at(i)<'9'))
+            {
+                cout << "Invalid algebraic expression!" << endl;
+            }
+            break;
+        }
+        Stack.push(pRoot);
+    }
+
+    pRoot = Stack.top();
+    Stack.pop();
 }
 
 // Traverse the binary tree pre-order.

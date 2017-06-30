@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include "BinaryTree.h"
 
 using namespace std;
@@ -27,4 +27,13 @@ void main()
 
     // level order traversal
     binaryTree.LevelOrder();
+
+    string sPostFix = "34+5*6-";
+    string sPrefix  = "-*+3456";
+
+    BiTree ExpressionTree;
+    //ExpressionTree.CreateFromPostFixExpression(sPostFix);
+    ExpressionTree.CreateFromPreFixExpression(sPrefix);
+
+    ExpressionTree.RecurInOrder();
 }
