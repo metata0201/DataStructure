@@ -10,6 +10,7 @@ public:
 private:
     bool bIsFirst;          // Specially use for non-recursive post-order traversal.
     char data;
+    int val;                // Result of the operation between left child and right child.
     BiTreeNode *pLChild;
     BiTreeNode *pRChild;
 };
@@ -38,10 +39,14 @@ public:
     void NonRecurInOrderNew();
     void NonRecurPostOrderNew();
 
+    // Expression tree evaluation
+    int Evaluate();
+
 private:
     void PreOrder(BiTreeNode* pNode);
     void InOrder(BiTreeNode* pNode);
     void PostOrder(BiTreeNode* pNode);
+    void PostOrderEvaluate(BiTreeNode* pNode);
 
 private:
     BiTreeNode *pRoot;

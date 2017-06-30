@@ -32,8 +32,9 @@ void main()
     string sPrefix  = "-*+3456";
 
     BiTree ExpressionTree;
-    //ExpressionTree.CreateFromPostFixExpression(sPostFix);
-    ExpressionTree.CreateFromPreFixExpression(sPrefix);
+    ExpressionTree.CreateFromPostFixExpression(sPostFix);
+    //ExpressionTree.CreateFromPreFixExpression(sPrefix);
 
-    ExpressionTree.RecurInOrder();
+    //ExpressionTree.RecurInOrder();
+    cout << "Post-order evaluate:" << ExpressionTree.Evaluate();
 }

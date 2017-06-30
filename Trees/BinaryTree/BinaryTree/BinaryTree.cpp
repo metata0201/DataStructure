@@ -83,7 +83,7 @@ void BiTree::CreateFromPostFixExpression(string sPostFix)
             Stack.pop();
             break;
         default:
-            if (!(sPostFix.at(i)>'0' && sPostFix.at(i)<'9'))
+            if (!(sPostFix.at(i)>='0' && sPostFix.at(i)<='9'))
             {
                 cout << "Invalid algebraic expression!" << endl;
             }
@@ -119,7 +119,7 @@ void BiTree::CreateFromPreFixExpression(string sPreFix)
             Stack.pop();
             break;
         default:
-            if (!(sPreFix.at(i)>'0' && sPreFix.at(i)<'9'))
+            if (!(sPreFix.at(i)>='0' && sPreFix.at(i)<='9'))
             {
                 cout << "Invalid algebraic expression!" << endl;
             }
@@ -444,4 +444,46 @@ void BiTree::NonRecurPostOrderNew()
         }
     }
     cout << endl;
+}
+
+// Expression tree evaluation
+int BiTree::Evaluate()
+{
+    PostOrderEvaluate(pRoot);
+    return pRoot->val;
+}
+
+// Post-order traverse the expression tree to evaluate algebraic expression.
+void BiTree::PostOrderEvaluate(BiTreeNode* pNode)
+{
+    if (pNode)
+    {
+        PostOrderEvaluate(pNode->pLChild);
+        PostOrderEvaluate(pNode->pRChild);
+        switch (pNode->data)
+        {
+        case '+':
+            pNode->val = (pNode->pLChild->val) + (pNode->pRChild->val);
+            break;
+        case '-':
+            pNode->val = (pNode->pLChild->val) - (pNode->pRChild->val);
+            break;
+        case '*':
+            pNode->val = (pNode->pLChild->val) * (pNode->pRChild->val);
+            break;
+        case '/':
+            pNode->val = (pNode->pLChild->val) / (pNode->pRChild->val);
+            break;
+        default:
+            if (pNode->data >= '0' && pNode->data <= '9')
+            {
+                pNode->val = pNode->data - '0';
+            }
+            else
+            {
+                cout << "Invalid operand!" << endl;
+            }
+            break;
+        }
+    }
 }
