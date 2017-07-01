@@ -506,7 +506,7 @@ BiTreeNode* BiTree::CopyNode(BiTreeNode* pOrignalNode)
 {
     if (pOrignalNode)
     {
-        BiTreeNode* pParent = new BiTreeNode(pOrignalNode->data);
+        BiTreeNode* pParent = new BiTreeNode(pOrignalNode->data); // like pre-order
         pParent->pLChild = CopyNode(pOrignalNode->pLChild);
         pParent->pRChild = CopyNode(pOrignalNode->pRChild);
         return pParent;
@@ -515,4 +515,30 @@ BiTreeNode* BiTree::CopyNode(BiTreeNode* pOrignalNode)
     {
         return NULL;
     }
+}
+
+// Test tree equality
+bool BiTree::operator == (BiTree &tree)
+{
+    return IsEqual(pRoot, tree.GetRoot());
+}
+
+bool BiTree::IsEqual(BiTreeNode* pNodeA, BiTreeNode* pNodeB)
+{
+    if (!pNodeA && !pNodeB)
+    {
+        return true;
+    }
+
+    if (pNodeA && pNodeB &&
+        (pNodeA->bIsFirst == pNodeB->bIsFirst) &&    // data information are the same
+        (pNodeA->data == pNodeB->data) &&
+        (pNodeA->val == pNodeB->val) &&
+        IsEqual(pNodeA->pLChild, pNodeB->pLChild) && // Left sub-tree is the same
+        IsEqual(pNodeA->pRChild, pNodeB->pRChild))   // Right sub-tree is the same
+    {
+        return true;
+    }
+
+    return false;
 }

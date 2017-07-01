@@ -48,12 +48,16 @@ public:
     // Copy tree
     void Copy(BiTree &orignalTree);
 
+    // Test tree equality
+    bool operator==(BiTree &tree);
+
 private:
     void PreOrder(BiTreeNode* pNode);
     void InOrder(BiTreeNode* pNode);
     void PostOrder(BiTreeNode* pNode);
     void PostOrderEvaluate(BiTreeNode* pNode);
     BiTreeNode* CopyNode(BiTreeNode* pOrignalNode);
+    bool IsEqual(BiTreeNode* pNodeA, BiTreeNode* pNodeB);
 
 private:
     BiTreeNode *pRoot;

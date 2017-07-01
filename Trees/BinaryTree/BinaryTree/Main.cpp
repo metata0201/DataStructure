@@ -29,17 +29,18 @@ void main()
     //binaryTree.LevelOrder();
 
     string sPostFix = "34+5*6-";
-    string sPrefix  = "-*+3456";
+    string sPrefix  = "-*+3457";
 
-    BiTree ExpressionTree;
-    ExpressionTree.CreateFromPostFixExpression(sPostFix);
-    //ExpressionTree.CreateFromPreFixExpression(sPrefix);
+    BiTree ExpressionTreeA, ExpressionTreeB;
+    ExpressionTreeA.CreateFromPostFixExpression(sPostFix);
+    ExpressionTreeB.CreateFromPreFixExpression(sPrefix);
 
-    //ExpressionTree.RecurInOrder();
-    //cout << "Post-order evaluate:" << ExpressionTree.Evaluate();
-
-    BiTree tree;
-    tree.Copy(ExpressionTree);
-
-    tree.RecurInOrder();
+    if (ExpressionTreeA == ExpressionTreeB)
+    {
+        cout << "They are equal." << endl;
+    }
+    else
+    {
+        cout << "They are not equal." << endl;
+    }
 }
