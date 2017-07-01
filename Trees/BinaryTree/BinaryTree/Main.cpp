@@ -5,28 +5,28 @@ using namespace std;
 
 void main()
 {
-    char c[9] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' };
+    //char c[9] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' };
 
-    BiTree binaryTree;
-    binaryTree.CreateFromLevelOrder(c, 9);
+    //BiTree binaryTree;
+    //binaryTree.CreateFromLevelOrder(c, 9);
 
-    // Pre-order traversal
-    binaryTree.RecurPreOrder();
-    binaryTree.NonRecurPreOrder();
-    binaryTree.NonRecurPreOrderNew();
+    //// Pre-order traversal
+    //binaryTree.RecurPreOrder();
+    //binaryTree.NonRecurPreOrder();
+    //binaryTree.NonRecurPreOrderNew();
 
-    // In-order traversal
-    binaryTree.RecurInOrder();
-    binaryTree.NonRecurInOrder();
-    binaryTree.NonRecurInOrderNew();
+    //// In-order traversal
+    //binaryTree.RecurInOrder();
+    //binaryTree.NonRecurInOrder();
+    //binaryTree.NonRecurInOrderNew();
 
-    // Post-order traversal
-    binaryTree.RecurPostOrder();
-    binaryTree.NonRecurPostOrder();
-    binaryTree.NonRecurPostOrderNew();
+    //// Post-order traversal
+    //binaryTree.RecurPostOrder();
+    //binaryTree.NonRecurPostOrder();
+    //binaryTree.NonRecurPostOrderNew();
 
-    // level order traversal
-    binaryTree.LevelOrder();
+    //// level order traversal
+    //binaryTree.LevelOrder();
 
     string sPostFix = "34+5*6-";
     string sPrefix  = "-*+3456";
@@ -36,5 +36,10 @@ void main()
     //ExpressionTree.CreateFromPreFixExpression(sPrefix);
 
     //ExpressionTree.RecurInOrder();
-    cout << "Post-order evaluate:" << ExpressionTree.Evaluate();
+    //cout << "Post-order evaluate:" << ExpressionTree.Evaluate();
+
+    BiTree tree;
+    tree.Copy(ExpressionTree);
+
+    tree.RecurInOrder();
 }

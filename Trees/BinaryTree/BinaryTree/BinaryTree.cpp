@@ -9,6 +9,7 @@ BiTreeNode::BiTreeNode(char c)
 {
     bIsFirst = false;
     data = c;
+    val  = 0;
     pLChild = nullptr;
     pRChild = nullptr;
 }
@@ -485,5 +486,33 @@ void BiTree::PostOrderEvaluate(BiTreeNode* pNode)
             }
             break;
         }
+    }
+}
+
+// Get root
+BiTreeNode* BiTree::GetRoot()
+{
+    return pRoot;
+}
+
+// Copy tree
+void BiTree::Copy(BiTree &orignalTree)
+{
+    pRoot = CopyNode(orignalTree.GetRoot());
+}
+
+// Copy binary tree node
+BiTreeNode* BiTree::CopyNode(BiTreeNode* pOrignalNode)
+{
+    if (pOrignalNode)
+    {
+        BiTreeNode* pParent = new BiTreeNode(pOrignalNode->data);
+        pParent->pLChild = CopyNode(pOrignalNode->pLChild);
+        pParent->pRChild = CopyNode(pOrignalNode->pRChild);
+        return pParent;
+    }
+    else
+    {
+        return NULL;
     }
 }

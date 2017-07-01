@@ -42,11 +42,18 @@ public:
     // Expression tree evaluation
     int Evaluate();
 
+    // Get root
+    BiTreeNode* GetRoot();
+
+    // Copy tree
+    void Copy(BiTree &orignalTree);
+
 private:
     void PreOrder(BiTreeNode* pNode);
     void InOrder(BiTreeNode* pNode);
     void PostOrder(BiTreeNode* pNode);
     void PostOrderEvaluate(BiTreeNode* pNode);
+    BiTreeNode* CopyNode(BiTreeNode* pOrignalNode);
 
 private:
     BiTreeNode *pRoot;
